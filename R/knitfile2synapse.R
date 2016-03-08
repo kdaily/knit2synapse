@@ -53,16 +53,16 @@ knitfile2synapse <- function(file, owner, parentWikiId=NULL, wikiName=NULL, over
     dir.create(knitPlotDir)  
   knitr::opts_chunk$set(fig.path = knitPlotDir)
   
-  ## File name 
-  mdName <- file.path(knitDir, paste(fName, ".md", sep=""))
-  
   ## Knit file to markdown
   if (knitmd) {
+    ## File name 
+    mdName <- file.path(knitDir, paste(fName, ".md", sep=""))
+    
     mdFile <- knitr::knit(file,
                           envir = parent.frame(n=2),
                           output = mdName)
-  } else if (file.exists(mdName)) { # if knitmd is false check already markdown exists
-    mdFile <- mdName
+  } else if (file.exists(fName)) { # if knitmd is false check already markdown exists
+    mdFile <- fName
   } else {
     stop(sprintf("markdown file %s does not exist at this location: %s", basename(mdName), mdName))
   }
