@@ -62,7 +62,7 @@ knitfile2synapse <- function(file, owner, parentWikiId=NULL, wikiName=NULL, over
                           envir = parent.frame(n=2),
                           output = mdName)
   } else if (file.exists(fName)) { # if knitmd is false check already markdown exists
-    mdFile <- fName
+    mdFile <- file
   } else {
     stop(sprintf("markdown file %s does not exist.", fName))
   }
