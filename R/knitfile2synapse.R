@@ -64,7 +64,7 @@ knitfile2synapse <- function(file, owner, parentWikiId=NULL, wikiName=NULL, over
   } else if (file.exists(fName)) { # if knitmd is false check already markdown exists
     mdFile <- fName
   } else {
-    stop(sprintf("markdown file %s does not exist at this location: %s", basename(mdName), mdName))
+    stop(sprintf("markdown file %s does not exist.", fName))
   }
     att <- list.files(knitPlotDir, full.names=TRUE)
 
