@@ -61,12 +61,12 @@ knitfile2synapse <- function(file, owner, parentWikiId=NULL, wikiName=NULL, over
     mdFile <- knitr::knit(file,
                           envir = parent.frame(n=2),
                           output = mdName)
-  } else if (file.exists(fName)) { # if knitmd is false check already markdown exists
+  } else if (file.exists(file)) { # if knitmd is false check already markdown exists
     mdFile <- file
   } else {
     stop(sprintf("markdown file %s does not exist.", fName))
   }
-    att <- list.files(knitPlotDir, full.names=TRUE)
+  att <- list.files(knitPlotDir, full.names=TRUE)
 
   ## Create/retrieve and store Wiki markdown to Synapse
   w <- try(synapseClient::synGetWiki(owner),silent=T)
